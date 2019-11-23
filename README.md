@@ -67,9 +67,9 @@ Stop and process audio data:
 ```javascript
 rec.stop(function (blob) {
   rec.close();
-  // Load audio.
+  // Show audio wave.
   loadWave(blob);
-  // enable audio download. 
+  // Enable audio download. 
   enableDownload(blob);
 }, function () {
   console.log('Record failed');
@@ -80,7 +80,7 @@ rec.stop(function (blob) {
 
 ### Wave
 
-The audio wave is created generated  [Wavesurfer.js]( https://wavesurfer-js.org/ ).
+The audio wave is generated with  [Wavesurfer.js]( https://wavesurfer-js.org/ ).
 
 HTML code:
 
@@ -89,6 +89,7 @@ HTML code:
 <div id="waveform"></div>
 
 <script src="https://unpkg.com/wavesurfer.js"></script>
+<!-- Microphone plugin for recording wave -->
 <script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.microphone.min.js"></script>
 ```
 
@@ -100,6 +101,10 @@ const wavesurfer = WaveSurfer.create({
   waveColor: 'violet',
   progressColor: 'purple',
   cursorColor: 'white',
+  plugins: [
+    // Using microphone plugin to create wave when recording.
+    WaveSurfer.microphone.create()
+  ]
 });
 ```
 
@@ -107,7 +112,6 @@ Generate playing wave with `load` method and   [`ObjectURL`]( https://developer.
 
 ```java
 function loadWave(blob) {
-  wavesurfer.empty();
   objectURL = URL.createObjectURL(blob);
   wavesurfer.load(objectURL);
 }
@@ -124,7 +128,8 @@ wavesurfer.microphone.start();
 HTML:
 
 ```javascript
-<button class="btn btn-download" id="downloadButton" disabled>Download
+<button class="btn btn-download" id="downloadButton" disabled>
+  Download
   <a href="#" class="download-link" id="download-link" download></a>
 </button>
 ```
