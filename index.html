@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Audio Recorder</title>
+</head>
+<body>
+  <div class="recorder">
+    <div class="btn-group">
+      <button class="btn" id="recordButton">Record Start</button>
+      <button class="btn" id="stopButton" disabled>Record Stop</button>
+      <button class="btn" id="playButton" disabled>Play</button>
+      <button class="btn btn-download" id="downloadButton" disabled>Download
+        <a href="#" class="download-link" id="download-link" download></a>
+      </button>
+    </div>
+    <div id="waveform"></div>
+  </div>
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.microphone.min.js"></script>
+  <script src="./lib/recorder.mp3.min.js"></script>
+  <script src="./index.js" ></script>
+</body>
+</html>
